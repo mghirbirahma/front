@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontapp
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: frontapp
+    spec:
+      containers:
+        - name: container-frontapp
+          image: mghirbirahma/front:latest
+          ports:
+            - containerPort: 8000
+
